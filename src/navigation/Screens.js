@@ -1,17 +1,13 @@
-import About from "../screens/About";
 import CourseInfo from "../screens/CourseInfo";
 import Courses from "../screens/Courses";
 // drawer
 import CustomDrawerContent from "./Menu";
-import Debug from "../screens/Debug";
 import { Dimensions } from "react-native";
 // header for screens
 import { Header } from "../components";
 import Login from "../screens/Login";
 // screens
-import Profile from "../screens/Profile";
 import React from "react";
-import Settings from "../screens/Settings"
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 // Localizations

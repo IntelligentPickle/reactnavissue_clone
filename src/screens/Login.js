@@ -33,15 +33,14 @@ function Login() {
     const [announcement, setAnnouncement] = useRecoilState(announcementAtom)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [remMeBoxValue, setRemMeBoxValue] = useState(false)
     const [loginLoading, setLoginLoading] = useState(false)
     const navigation = useNavigation(); // Allows navigation between our screens
     const theme = useTheme();
   
-    const initLogin = async (usr, psw) => {
+    const initLogin = async () => {
       setLoginLoading(true);
 
-      let authData = await login(usr, psw); // Get session token
+      let authData = await login(); // Get session token
       setAuthData(authData)
       await SecureStore.setItemAsync('authToken', authData.accessToken);
 
