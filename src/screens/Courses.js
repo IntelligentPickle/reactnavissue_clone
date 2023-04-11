@@ -92,21 +92,11 @@ function Courses() {
               onPress={() => {
                 navigation.push('App', { screen: "CourseInfo", params: { course } })
               }}
-              left={() => <List.Icon icon={`numeric-${course.period}-box`} color={theme.colors.COURSES_PERIOD_BADGE_COLOR}/>}
-              right={() => {
-                  if (course.average > 100) {
-                    return (<List.Icon icon="check-all" color={theme.colors.COURSES_EXCELLING_INDICATOR_COLOR}/>)
-                  } else if (course.average >= 70) {
-                    return (<List.Icon icon="check" color={theme.colors.COURSES_PASSING_INDICATOR_COLOR}/>)
-                  } else return (<List.Icon icon="close" color={theme.colors.COURSES_FAILING_INDICATOR_COLOR}/>)
-                }
-              }
             />
           )
         }
         )
 }
-  let alerts = useAlerts()
   
   return (
     <Block flex center>

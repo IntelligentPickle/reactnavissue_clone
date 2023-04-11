@@ -41,38 +41,7 @@ function CourseInfo({ route }) {
                 <List.Item
                   key={uuid.v4()}
                   title={assignment.assignmentName}
-                  description={
-                    (() => {
-                      if (typeof assignment.percentage !== 'number') {
-                        // Non-number grade. Try to match conditions.
-                        if (assignment.score === 'Z') {
-                          // Assignment was never turned in
-                          return `${i18n.t('CourseInfo.' + assignment.category)} - ${i18n.t('CourseInfo.AssignmentMissing')}`
-                        } else if (assignment.score === 'X') {
-                          return `${i18n.t('CourseInfo.' + assignment.category)} - ${i18n.t('CourseInfo.AssignmentExempt')}`
-                        } else if (assignment.score === '-') {
-                          return `${i18n.t('CourseInfo.' + assignment.category)} - ${i18n.t('CourseInfo.AssignmentUngraded')}`
-                        }
-                      } else {
-                        return `${i18n.t('CourseInfo.' + assignment.category)} - ${assignment.score}`
-                      }
-                    })()
-                  }
-                  left={() => {
-                      if (typeof assignment.percentage !== 'number') {
-                        // Non-number grade. Try to match conditions.
-                        if (assignment.score === 'Z' || assignment.score === 'X') {
-                          // Problem with assignment.
-                          return (<List.Icon icon="clipboard-clock-outline" color={argonTheme.COLORS.WARNING}/>)
-                        } else {
-                          return (<List.Icon icon="clipboard" color={argonTheme.COLORS.MUTED}/>)
-                        }  
-                    } else if (assignment.percentage <= 70) {
-                      return (<List.Icon icon="clipboard-alert" color={argonTheme.COLORS.ERROR}/>)
-                    } else {
-                      return (<List.Icon icon="clipboard-check" color={argonTheme.COLORS.SUCCESS}/>)
-                    }
-                  }}
+                  description={`${i18n.t('CourseInfo.' + assignment.category)} - ${assignment.score}`}
                 />
               )
             }
