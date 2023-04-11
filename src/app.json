@@ -28,22 +28,8 @@
     "plugins": [
     ],
     "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "edforma",
-            "project": "edforma",
-            "authToken": "b0f2b9f40f1e4530942cee6a027945deba263644f06047428d21734a341da028"
-          }
-        }
-      ]
     },
     "extra": {
-      "eas": {
-        "projectId": "83cb1b80-de7c-4f8f-9988-c8f948a51569"
-      },
-      "apiRootUrl": "https://api.edforma.app/"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
