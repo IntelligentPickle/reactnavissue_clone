@@ -96,17 +96,12 @@ i18n.fallbacks = true; // If text localization doesn't exist, fallback to a loca
 enableScreens();
 
 const App = () => {
-  const navigationRef = useRef(); // Reference for the navigation container
   const scheme = useColorScheme(); // Get the current color scheme.
 
   Font.loadAsync('ArgonExtra', require('./assets/font/argon.ttf'))
 
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      onReady={() => {
-        // routingInstrumentation.registerNavigationContainer(navigationRef); Would have been used to initialize sentry routing instrumentations.
-      }}>
+    <NavigationContainer>
       <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
         <AlertsProvider>
           <RecoilRoot>
