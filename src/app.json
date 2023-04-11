@@ -26,7 +26,6 @@
       "package": "app.edforma.edforma"
     },
     "plugins": [
-      "sentry-expo"
     ],
     "hooks": {
       "postPublish": [
