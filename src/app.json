@@ -13,18 +13,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "bundleIdentifier": "app.edforma.edforma",
-      "buildNumber": "1.1.4",
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "app.edforma.edforma"
-    },
     "plugins": [
     ],
     "hooks": {

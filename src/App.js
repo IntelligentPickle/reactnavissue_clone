@@ -4,8 +4,8 @@ import * as Localization from 'expo-localization';
 
 import { Block, GalioProvider } from "galio-framework";
 import { DarkTheme, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
-import React, { useRef, useState } from 'react';
+import FlashMessage from 'react-native-flash-message';
+import React, { useRef } from 'react';
 
 import { AlertsProvider } from 'react-native-paper-alerts';
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,8 +14,7 @@ import Screens from './navigation/Screens'
 import { argonTheme } from "./constants";
 import { enableScreens } from "react-native-screens";
 import i18n from 'i18n-js';
-import { Alert, useColorScheme } from 'react-native'
-import * as SplashScreen from 'expo-splash-screen';
+import { useColorScheme } from 'react-native'
 import * as Font from 'expo-font';
 
 // Define the theme used by React Native Paper.
@@ -95,7 +94,6 @@ i18n.fallbacks = true; // If text localization doesn't exist, fallback to a loca
 
 // Before rendering any navigation stack
 enableScreens();
-
 
 const App = () => {
   const navigationRef = useRef(); // Reference for the navigation container

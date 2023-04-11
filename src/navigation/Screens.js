@@ -1,7 +1,6 @@
 import CourseInfo from "../screens/CourseInfo";
 import Courses from "../screens/Courses";
 // drawer
-import CustomDrawerContent from "./Menu";
 import { Dimensions } from "react-native";
 // header for screens
 import { Header } from "../components";
@@ -63,7 +62,6 @@ function AppStack(props) {
     <Drawer.Navigator
       style={{ flex: 1 }}
       initialRouteName="Courses"
-      drawerContent={props => <CustomDrawerContent {...props} />}
       drawerStyle={{
         backgroundColor: "white",
         width: width * 0.8

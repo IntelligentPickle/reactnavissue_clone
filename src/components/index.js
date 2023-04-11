@@ -1,4 +1,3 @@
-import AnnouncementBanner from './AnnouncementBanner';
 import Button from './Button';
 import Card from './Card';
 import DrawerItem from './DrawerItem';
@@ -16,6 +15,5 @@ export {
   Input,
   Header,
   Switch, 
-  Select,
-  AnnouncementBanner
+  Select
 };

@@ -90,7 +90,7 @@ function Courses() {
               title={course.subject}
               description={`${course.average} - ${course.teacher}`}
               onPress={() => {
-                navigation.push('App', { screen: "CourseInfo" })
+                navigation.push('App', { screen: "CourseInfo", params: { course } })
               }}
               left={() => <List.Icon icon={`numeric-${course.period}-box`} color={theme.colors.COURSES_PERIOD_BADGE_COLOR}/>}
               right={() => {

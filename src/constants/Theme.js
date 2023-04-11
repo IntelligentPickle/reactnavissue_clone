@@ -1,5 +1,6 @@
 export default {
   COLORS: {
+    // Legacy theming system. To be replaced.
     DEFAULT: '#172B4D',
     PRIMARY: '#009CDE',
     SECONDARY: '#F7FAFC',
