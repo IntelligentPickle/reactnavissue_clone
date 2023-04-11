@@ -110,8 +110,7 @@ const App = () => {
     <NavigationContainer
       ref={navigationRef}
       onReady={() => {
-        // Register the navigation container with the instrumentation
-        routingInstrumentation.registerNavigationContainer(navigationRef);
+        // routingInstrumentation.registerNavigationContainer(navigationRef); Would have been used to initialize sentry routing instrumentations.
       }}>
       <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
         <AlertsProvider>
