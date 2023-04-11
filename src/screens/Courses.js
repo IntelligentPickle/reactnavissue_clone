@@ -8,8 +8,6 @@ import {
 } from "react-native";
 import React from "react";
 import i18n from 'i18n-js';
-import { showMessage } from "react-native-flash-message";
-import { useAlerts } from "react-native-paper-alerts";
 import { useNavigation } from "@react-navigation/core";
 import uuid from 'react-native-uuid';
 
