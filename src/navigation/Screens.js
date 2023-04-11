@@ -5,7 +5,6 @@ import CustomDrawerContent from "./Menu";
 import { Dimensions } from "react-native";
 // header for screens
 import { Header } from "../components";
-import Login from "../screens/Login";
 // screens
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -34,6 +33,7 @@ function AssignmentsStack(props) {
           cardStyle: { backgroundColor: theme.colors.BACKGROUND_COLOR }
         }}
       />
+      <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>
   );
 }
@@ -58,26 +58,11 @@ function CourseInfoStack(props) {
   );
 }
 
-function LoginStack(props) {
-  return (
-    <Stack.Navigator screenOptions={{ gestureEnabled: false, headerShown: false }}>
-      <Stack.Screen
-        name="LoginScreen"
-        component={Login}
-        options={{
-          headerTransparent: true
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
-    </Stack.Navigator>
-  );
-}
-
 function AppStack(props) {
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
-      initialRouteName="Login"
+      initialRouteName="Courses"
       drawerContent={props => <CustomDrawerContent {...props} />}
       drawerStyle={{
         backgroundColor: "white",
@@ -113,7 +98,6 @@ function AppStack(props) {
       }}
       backBehavior="history"
     >
-      <Drawer.Screen name="Login" component={LoginStack} />
       <Drawer.Screen name="Courses" component={AssignmentsStack} />
       <Drawer.Screen name="CourseInfo" component={CourseInfoStack} />
 

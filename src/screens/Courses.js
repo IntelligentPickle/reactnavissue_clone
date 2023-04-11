@@ -6,12 +6,7 @@ import {
   ScrollView,
   StyleSheet
 } from "react-native";
-import React, { useEffect } from "react";
-import { authAtom, currentSelectedCourseAtom, userAssignmentsAtom } from "../state";
-import { useRecoilState, useRecoilValue } from "recoil";
-
-//argon
-import { getUserAssignments } from "../utils"
+import React from "react";
 import i18n from 'i18n-js';
 import { showMessage } from "react-native-flash-message";
 import { useAlerts } from "react-native-paper-alerts";
@@ -21,29 +16,73 @@ import uuid from 'react-native-uuid';
 const { width } = Dimensions.get("screen");
 
 function Courses() {
-  
-  const authData = useRecoilValue(authAtom);
-  const [userAssignments, setUserAssignments] = useRecoilState(userAssignmentsAtom)
-  const [currentSelectedCourse, setCurrentSelectedCourse] = useRecoilState(currentSelectedCourseAtom)
+  let userAssignments = {
+    "status": "success",
+    "classAverages": [
+      {
+        "period": "1",
+        "subject": "Fundamentals of Something",
+        "course": "477B",
+        "teacher": "Cool Guy Joe",
+        "teacherEmail": "coolguyjoe@someisd.net",
+        "average": 100,
+        "assignments": [
+          {
+            "dueDate": "3/21",
+            "assignedDate": "3/12",
+            "assignmentName": "Something",
+            "category": "Major",
+            "score": 5,
+            "totalPoints": 1,
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "period": "2",
+        "subject": "Pyrotechnics Theory",
+        "course": "875A",
+        "teacher": "Billy Joel",
+        "teacherEmail": "billyjoel@someisd.net",
+        "average": 100,
+        "assignments": [
+          {
+            "dueDate": "3/11",
+            "assignedDate": "3/1",
+            "assignmentName": "Starting a Fire",
+            "category": "Major",
+            "score": 5,
+            "totalPoints": 1,
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "period": "3",
+        "subject": "Culinary",
+        "course": "765A",
+        "teacher": "The Reaper",
+        "teacherEmail": "thereaper@someisd.net",
+        "average": 100,
+        "assignments": [
+          {
+            "dueDate": "3/11",
+            "assignedDate": "3/1",
+            "assignmentName": "Blue Oysters",
+            "category": "Daily",
+            "score": 5,
+            "totalPoints": 1,
+            "percentage": 100
+          }
+        ]
+      },
+    ]
+  }
+
   const navigation = useNavigation(); // Allows navigation between our screens
   const theme = useTheme()
-  useEffect(() => {
-    async function syncAssignments() {
-      setUserAssignments(await getUserAssignments(authData.accessToken))
-    }
-    syncAssignments()
-  }, [])
 
   const listContents = () => {
-    if(userAssignments instanceof Error) {
-      showMessage({
-        message: i18n.t('Errors.CoursesUnavailableTitle'),
-        description: i18n.t('Errors.CoursesUnavailableSubtitle', { error: userAssignments.response.data.error ? userAssignments.response.data.error : userAssignments.message }),
-        type: 'danger',
-        icon: 'danger',
-      })
-      return null
-    } else {
         return userAssignments && userAssignments.classAverages.map(course => {
           return (
             <List.Item
@@ -51,10 +90,7 @@ function Courses() {
               title={course.subject}
               description={`${course.average} - ${course.teacher}`}
               onPress={() => {
-                navigation.push('App', {
-                  screen: 'CourseInfo',
-                  params: { course }
-                })
+                navigation.push('App', { screen: "CourseInfo" })
               }}
               left={() => <List.Icon icon={`numeric-${course.period}-box`} color={theme.colors.COURSES_PERIOD_BADGE_COLOR}/>}
               right={() => {
@@ -69,8 +105,7 @@ function Courses() {
           )
         }
         )
-    }
-  }
+}
   let alerts = useAlerts()
   
   return (
