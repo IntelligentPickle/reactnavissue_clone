@@ -1,6 +1,5 @@
 import * as Crypto from 'expo-crypto';
 import * as SecureStore from 'expo-secure-store';
-import * as Sentry from 'sentry-expo';
 import * as localauth from 'expo-local-authentication'
 
 import { Block, Checkbox, Text } from "galio-framework";
@@ -74,8 +73,6 @@ function Login() {
         Crypto.CryptoDigestAlgorithm.MD5,
         registrationData.misc.studentUsername
       );
-
-      Sentry.Native.configureScope(scope => scope.setUser({ username: hashedUsername }));
       navigation.navigate("App", { screen: "Profile" }) // Go to the profile page
       setLoginLoading(false) // Loading done
     }

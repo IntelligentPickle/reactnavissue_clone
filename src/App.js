@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 
 import * as Localization from 'expo-localization';
-import * as Sentry from 'sentry-expo';
 
 import { Block, GalioProvider } from "galio-framework";
 import { DarkTheme, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -18,7 +17,6 @@ import i18n from 'i18n-js';
 import { Alert, useColorScheme } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import * as Updates from 'expo-updates'
 
 // Keep splash screen shown
 SplashScreen.preventAutoHideAsync();
@@ -98,36 +96,6 @@ i18n.translations = {
 i18n.locale = Localization.locale // Define the system's locale.
 i18n.fallbacks = true; // If text localization doesn't exist, fallback to a locale that does have it.
 
-const routingInstrumentation = new Sentry.Native.ReactNavigationInstrumentation(); // Create a navigation instrumentation for Sentry.
-
-// Initialize Sentry.
-Sentry.init({
-  dsn: 'https://d59e7d1d02b84179ac870505aa2b2fb2@o1069103.ingest.sentry.io/6063441',
-  integrations: [
-    new Sentry.Native.ReactNativeTracing({
-      tracingOrigins: ["localhost", /^\//],
-      routingInstrumentation
-    })
-  ],
-  tracesSampleRate: .4, // CHANGE THIS IN PRODUCTION!
-  enableInExpoDevelopment: false,
-  enableAutoSessionTracking: true,
-  dist: Updates.updateId,
-  debug: true,
-  beforeSend(event) {
-    // In the future, we can show an error report dialog on an error event.
-    if (event.exception) {
-      showMessage({
-        message: i18n.t('Errors.InternalErrorTitle'),
-        description: i18n.t('Errors.InternalErrorSubtitle', { error: event.exception.values[0].value }),
-        type: 'danger',
-        icon: 'danger',
-      })
-    }
-    return event;
-  },
-});
-
 // Before rendering any navigation stack
 enableScreens();
 
@@ -135,7 +103,6 @@ enableScreens();
 const App = () => {
   const navigationRef = useRef(); // Reference for the navigation container
   const scheme = useColorScheme(); // Get the current color scheme.
-  const [isLoadingComplete, setLoading] = useState(false);
 
   Font.loadAsync('ArgonExtra', require('./assets/font/argon.ttf'))
 
@@ -162,4 +129,4 @@ const App = () => {
   );
 }
 
-export default Sentry.Native.wrap(App);
+export default App;

@@ -18,7 +18,7 @@ import { argonTheme } from "../constants/";
 import i18n from 'i18n-js';
 import { useNavigation } from "@react-navigation/core";
 import * as Updates from 'expo-updates'
-import * as Sentry from 'sentry-expo';
+
 
 const { width } = Dimensions.get("screen");
 
@@ -68,7 +68,7 @@ function Debug() {
               description={i18n.t('Debug.ThrowErrorSubtitle')}
               left={() => <List.Icon icon='alert-circle' color={argonTheme.COLORS.ERROR}/>}
               onPress={() => {
-                Sentry.Native.captureException(new Error('User-induced error from Debug menu.'))
+                new Error('User-induced error from Debug menu.')
               }}/>
           </List.Section>
           <List.Section style={{ width: width }}>
