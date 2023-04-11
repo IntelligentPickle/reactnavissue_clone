@@ -40,24 +40,8 @@ function Login() {
   
     const initLogin = async (usr, psw) => {
       setLoginLoading(true);
-      if (remMeBoxValue === true) {
-        await SecureStore.setItemAsync('ssoUsername', usr);
-        await SecureStore.setItemAsync('ssoPassword', psw);
-      }
 
       let authData = await login(usr, psw); // Get session token
-      if (authData instanceof Error) {
-        showMessage({
-          message: i18n.t('Errors.LoginErrorTitle'),
-          // When we pass the error, it will be displayed in the message body. If Edformer (server) has an error message, we will display that. Otherwise, we will display the JS error given from Axios.
-          description: i18n.t('Errors.LoginErrorSubtitle', { error: authData.response.data.error ? authData.response.data.error : authData.message }),
-          type: "danger",
-          icon: "danger",
-          duration: 5000
-        })
-        return setLoginLoading(false)
-      }
-
       setAuthData(authData)
       await SecureStore.setItemAsync('authToken', authData.accessToken);
 
@@ -69,11 +53,7 @@ function Login() {
         misc: registrationData.misc
       }) // Set all user data
 
-      const hashedUsername = await Crypto.digestStringAsync(
-        Crypto.CryptoDigestAlgorithm.MD5,
-        registrationData.misc.studentUsername
-      );
-      navigation.navigate("App", { screen: "Profile" }) // Go to the profile page
+      navigation.navigate("App", { screen: "Courses" }) // Go to the profile page
       setLoginLoading(false) // Loading done
     }
 
@@ -81,54 +61,12 @@ function Login() {
       initLogin(username, password)
     }
 
-    // Check if the server is up.
-    useEffect(() => {
-      async function checkHeartbeat() {
-        let heartbeatStats = await getHeartbeat(); //
-        if (heartbeatStats instanceof Error) {
-          setLoginLoading(false);
-          showMessage({
-            message: i18n.t('Errors.ServerDownTitle'),
-            description: i18n.t('Errors.ServerDownSubtitle'),
-            type: "danger",
-            icon: "danger",
-            duration: 5000
-          })
-        } else {
-          if (heartbeatStats.data.server.announcement) {
-            setAnnouncement(heartbeatStats.data.server.announcement)
-          }
-        }
-      }
-      checkHeartbeat()
-    }, [])
-    // Check for saved passwords or tokens.
-    useEffect(() => {
-      async function checkPreExistingCreds() {
-        let storedUsername = await SecureStore.getItemAsync('ssoUsername');
-        let storedPassword = await SecureStore.getItemAsync('ssoPassword');
-        if (storedUsername && storedPassword) {
-          await initLogin(storedUsername, storedPassword)
-          return await SplashScreen.hideAsync()
-        } else {
-          return await SplashScreen.hideAsync()
-        }
-        
-      }
-      checkPreExistingCreds()
-    }, []);
-
     return (
       <Block flex middle style={{backgroundColor: theme.colors.BACKGROUND_COLOR}} ke>
         <StatusBar hidden />
-        {/* <ImageBackground
-          source={Images.RegisterBackground}
-          style={{ width, height, zIndex: 1 }}
-          resizeMode='contain'
-        > */}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <Block safe flex middle>
-            <Block style={{...styles.registerContainer, backgroundColor: theme.colors.LOGIN_CONTAINER_BACKGROUND_COLOR}}>
+            <Block>
               <Block flex>
                 <Block flex={0.18} middle>
                   <Text color={theme.colors.SCREEN_BODY_TEXT} size={12}>
@@ -136,68 +74,11 @@ function Login() {
                   </Text>
                 </Block>
                 <Block flex center>
-                  <KeyboardAvoidingView
-                    style={{ flex: 1 }}
-                    behavior="padding"
-                    enabled
-                  >
-                    <Block width={width * 0.8} style={{ marginBottom: 0 }}>
-                      <Input
-                        borderless
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        color={theme.colors.SCREEN_BODY_TEXT}
-                        backgroundColor={theme.colors.LOGIN_INPUT_BACKGROUND_COLOR}
-                        placeholder={i18n.t('Login.UsernamePlaceholder')}
-                        onChangeText={setUsername}
-                        value={username}
-                        editable={!loginLoading}
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={theme.colors.LOGIN_INPUT_ICON_COLOR}
-                            name="hat-3"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8}>
-                      <Input
-                        borderless
-                        password
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        color={theme.colors.SCREEN_BODY_TEXT}
-                        backgroundColor={theme.colors.LOGIN_INPUT_BACKGROUND_COLOR}
-                        viewPass
-                        placeholder={i18n.t('Login.PasswordPlaceholder')}
-                        onChangeText={setPassword}
-                        value={password}
-                        editable={!loginLoading}
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={theme.colors.LOGIN_INPUT_ICON_COLOR}
-                            name="padlock-unlocked"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block middle>
-                      <Checkbox color="primary" label={i18n.t('Login.RememberMe')} labelStyle={{ color: theme.colors.SCREEN_BODY_TEXT}} value={remMeBoxValue} onChange={setRemMeBoxValue}/>
-                    </Block>
-                    <Block middle>
-                      <Button color={loginLoading ? 'placeholder' : 'primary'} style={styles.createButton} onPress={() => onPressLogin()} loading={loginLoading} disabled={loginLoading}>
-                        <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          {i18n.t('Login.Submit')}
-                        </Text>
-                      </Button>
-                    </Block>
-                  </KeyboardAvoidingView>
+                  <Button color={loginLoading ? 'placeholder' : 'primary'} style={styles.createButton} onPress={() => onPressLogin()} loading={loginLoading} disabled={loginLoading}>
+                    <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+                      {i18n.t('Login.Submit')}
+                    </Text>
+                  </Button>
                 </Block>
               </Block>
             </Block>

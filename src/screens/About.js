@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { List, useTheme } from 'react-native-paper';
 
-import Images from "../constants/Images";
 import React from "react";
 //argon
 import { argonTheme } from "../constants/";
@@ -27,7 +26,6 @@ function About() {
         showsVerticalScrollIndicator={true}
       >
         <Block flex center style={styles.group}>
-          <Image source={theme.dark ? Images.ColoredLogo : Images.Logo} style={{ flex: 1, marginTop: 32, resizeMode: 'contain' }}></Image>
           <Text bold size={16} style={styles.title}>{i18n.t("About.Header")}</Text>
           <List.Section style={{ width: width }}>
             <List.Item

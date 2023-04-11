@@ -2,7 +2,6 @@ import { Block, Text, theme } from "galio-framework";
 import { Image, Pressable, ScrollView, StyleSheet } from "react-native";
 
 import { DrawerItem as DrawerCustomItem } from "../components";
-import Images from "../constants/Images";
 import React from "react";
 import i18n from "i18n-js";
 import { useTheme } from "react-native-paper";
@@ -18,7 +17,7 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Profile", "Courses", "Settings"];
+  const screens = ["Courses"];
   const theme = useTheme()
   return (
     <Block
@@ -37,7 +36,6 @@ function CustomDrawerContent({
               debugCounter = 0
             }
           }}>
-            <Image style={styles.logo} source={theme.dark ? Images.ColoredLogo : Images.Logo} />
         </Pressable>
       </Block>
       <Block flex style={{ paddingLeft: 8, paddingRight: 14 }}>

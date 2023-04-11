@@ -62,54 +62,6 @@ function CourseInfoStack(props) {
   );
 }
 
-function SettingsStack(props) {
-  const theme = useTheme();
-
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="SettingsScreen"
-        component={Settings}
-        options={{
-          headerMode: "screen",
-          header: ({ navigation, scene }) => (
-            <Header title={i18n.t('Menu.Settings')} navigation={navigation} scene={scene} color={theme.colors.HEADER_COLOR} bgColor={theme.colors.HEADER_BACKGROUND_COLOR}/>
-          ),
-          cardStyle: { backgroundColor: theme.colors.BACKGROUND_COLOR }
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function ProfileStack(props) {
-  const theme = useTheme();
-
-  return (
-    <Stack.Navigator initialRouteName="Profile">
-      <Stack.Screen
-        name="ProfileScreen"
-        component={Profile}
-        options={{
-          headerMode: "screen",
-          header: ({ navigation, scene }) => (
-            <Header
-              transparent
-              color={theme.colors.HEADER_COLOR}
-              title={i18n.t('Menu.Profile')}
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          cardStyle: { backgroundColor: theme.colors.BACKGROUND_COLOR },
-          headerTransparent: true
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-
 function LoginStack(props) {
   return (
     <Stack.Navigator screenOptions={{ gestureEnabled: false, headerShown: false }}>
@@ -121,46 +73,6 @@ function LoginStack(props) {
         }}
       />
       <Stack.Screen name="App" component={AppStack} />
-    </Stack.Navigator>
-  );
-}
-
-function AboutStack(props) {
-  const theme = useTheme();
-
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="AboutScreen"
-        component={About}
-        options={{
-          headerMode: "screen",
-          header: ({ navigation, scene }) => (
-            <Header title={i18n.t('Menu.About')} navigation={navigation} scene={scene} color={theme.colors.HEADER_COLOR} bgColor={theme.colors.HEADER_BACKGROUND_COLOR} back/>
-          ),
-          cardStyle: { backgroundColor: theme.colors.BACKGROUND_COLOR }
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function DebugStack(props) {
-  const theme = useTheme();
-
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="DebugScreen"
-        component={Debug}
-        options={{
-          headerMode: "screen",
-          header: ({ navigation, scene }) => (
-            <Header title={i18n.t('Menu.Debug')} navigation={navigation} scene={scene} color={theme.colors.HEADER_COLOR} bgColor={theme.colors.HEADER_BACKGROUND_COLOR} back/>
-          ),
-          cardStyle: { backgroundColor: theme.colors.BACKGROUND_COLOR }
-        }}
-      />
     </Stack.Navigator>
   );
 }
@@ -206,12 +118,8 @@ function AppStack(props) {
       backBehavior="history"
     >
       <Drawer.Screen name="Login" component={LoginStack} />
-      <Drawer.Screen name="Profile" component={ProfileStack} />
       <Drawer.Screen name="Courses" component={AssignmentsStack} />
-      <Drawer.Screen name="Settings" component={SettingsStack} />
-      <Drawer.Screen name="About" component={AboutStack} />
       <Drawer.Screen name="CourseInfo" component={CourseInfoStack} />
-      <Drawer.Screen name="Debug" component={DebugStack} />
 
     </Drawer.Navigator>
   );

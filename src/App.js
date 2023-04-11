@@ -18,9 +18,6 @@ import { Alert, useColorScheme } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
-// Keep splash screen shown
-SplashScreen.preventAutoHideAsync();
-
 // Define the theme used by React Native Paper.
 const lightTheme = {
   ...DefaultTheme,
