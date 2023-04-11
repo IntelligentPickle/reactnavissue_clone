@@ -1,0 +1,93 @@
+{
+    "Menu": {
+        "Profile": "Profile",
+        "Courses": "Courses",
+        "CourseInformation": "Course Information",
+        "Settings": "Settings",
+        "About": "About Edforma",
+        "Debug": "Debug Menu"
+    },
+    "Errors": {
+        "ServerDownTitle": "Edforma server unavailable",
+        "ServerDownSubtitle": "Edforma cannot reach it's servers. Try again later.",
+        "LoginErrorTitle": "Login Error",
+        "LoginErrorSubtitle": "There was an error logging in: '%{error}'. Please try again later.",
+        "ServerUnavailableSubtitle": "Edforma is currently unavailable. Try again later.",
+        "CoursesUnavailableTitle": "Error loading courses",
+        "CoursesUnavailableSubtitle": "There was an error loading your courses: '%{error}'. Please try again later.",
+        "InternalErrorTitle": "An error has occoured",
+        "InternalErrorSubtitle": "An internal error occoured: %{error}"
+    },
+    "Login": {
+        "Header": "Please sign into your district account.",
+        "UsernamePlaceholder": "Username",
+        "PasswordPlaceholder": "Password",
+        "RememberMe": "Remember me",
+        "Submit": "Log In",
+        "Processing": "Logging in..."
+    },
+    "Profile": {
+        "Absences": "Absences",
+        "Tardies": "Tardies",
+        "Balance": "Balance",
+        "GradeLevel": "Grade %{level}"
+    },
+    "Courses": {
+        "Header": "Courses",
+        "CoursesUnavailableTitle": "Courses unavailable",
+        "CoursesUnavailableSubtitle": "Please try again later.",
+        "TipSubtitle": "Tap a course to see assignments for that course.",
+        "ExcellingClassSubtitle": "Excelling (above 100)",
+        "PassingClassSubtitle": "Passing (70 or above)",
+        "FailingClassSubtitle": "Failing (Less than 70)"
+    },
+    "CourseInfo": {
+        "Daily": "Daily",
+        "Quiz": "Quiz",
+        "Major": "Major",
+        "AssignmentMissing": "Assignment missing",
+        "AssignmentExempt": "Exempt from assignment",
+        "AssignmentUngraded": "Ungraded",
+        "AssignmentGenericIssue": "Issue with assignment; contact teacher"
+    },
+    "Settings": {
+        "EditProfileTitle": "Edit profile",
+        "EditProfileSubtitle": "Change the name Edforma uses to identify you.",
+        "ProfileSetTitle": "Profile details set",
+        "ProfileSetSubtitle": "Edforma will now refer to you as '%{name}'",
+        "ProfileResetTitle": "Profile details reset",
+        "ProfileResetSubtitle": "Edforma will now refer to you as how the district refers to you.",
+        "LogOutTitle": "Log out",
+        "LogOutSubtitle": "Remove your district account from Edforma.",
+        "LogOutDialogTitle": "Logging out",
+        "LogOutDialogBody": "Are you sure you want to log out of Edforma?",
+        "LogOutDialogCancel": "Cancel",
+        "LogOutDialogConfirm": "Log Out",
+        "LogOutSuccessTitle": "Logged out",
+        "LogOutSuccessSubtitle": "You have been logged out of Edforma.",
+        "AboutTitle": "About",
+        "AboutSubtitle": "Meet the contributors to Edforma."
+    },
+    "About": {
+        "Header": "Thank you to the wonderful people below, who have helped make Edforma possible.",
+        "LeadDeveloperTitle": "Griffin Bauer",
+        "LeadDeveloperSubtitle": "Lead Developer",
+        "ThankYouTitle": "You, \"%{name}\"",
+        "ThankYouSubtitle": "Thank you for using Edforma!"
+    },
+    "Debug": {
+        "ToolsTitle": "Tools",
+        "InvalidateSessionTitle": "Invalidate session",
+        "InvalidateSessionSubtitle": "Change auth token to a false one. This simulates an expired token event.",
+        "ReloadAppTitle": "Reload app",
+        "ReloadAppSubtitle": "Reloads the app.",
+        "ForceUpdateTitle": "Download update",
+        "ForceUpdateSubtitle": "Check for an update from EAS. It will be installed if available!",
+        "ThrowErrorTitle": "Throw error",
+        "ThrowErrorSubtitle": "Throws an error.",
+        "ValuesTitle": "Values",
+        "CurrentUserTitle": "Current user",
+        "AuthTokenTitle": "Authentication token",
+        "UpdateInformationTitle": "Update info"
+    }
+}
